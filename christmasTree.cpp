@@ -3,7 +3,7 @@
 #define center 90
 
 using namespace std;
-bool validLev(unsigned short int);
+unsigned short int validLev(void);
 void top(unsigned short int);
 //void spaces(unsigned short int);
 void core(unsigned short int);
@@ -12,42 +12,35 @@ int main(int argc, char const *argv[])
 {
   unsigned short int levels; 
   char op;
-  bool validLevels;
   //cout<<endl;
-  if (!(argc >= 2))
+  /*if (!(argc >= 2))
     cout<<"Use chistmasTree num-of-levels";
   else{
-    levels = atoi(argv[1]);
+    levels = atoi(argv[1]);*/
   do{
-    validLevels = validLev(levels);
-    if (validLevels){
+    levels = validLev();
       cout<<"\t\t\t\t\t\t\t\t\t\t HAPPY NEW YEAR!!!"<<endl<<endl;
       top(levels);
       core(levels);
-      /* code */
-    }
-      /* cout<<endl<<endl<<"Do you want to make another christmas tree[y/n]?"; */
-      //op = tolower(getch());
+      cout<<endl<<endl<<"Do you want to make another christmas tree[y/n]? "; 
+      op = tolower(getch());
       cout<<endl;
   } while (op == 'y');
   return 0;
-  }
 }
 
-bool validLev(unsigned short int numOfLev){
-  //unsigned short int numOfLev;
+unsigned short int validLev(void){
+unsigned short int numOfLev;
   bool validNum = false;
   while (!validNum){
-    //cout<<"type the number of levels your tree will have this year: ";
-    //cin>>numOfLev;
+    cout<<"type the number of levels your tree will have this year: ";
+    cin>>numOfLev;
     if(numOfLev > 2 && numOfLev <= 15)
       validNum = true;
-    else{
+    else
       cout<<endl<<"The range of levels is [3 - 15]"<<endl;
-      break;
-    }
   }
-  return validNum;
+  return numOfLev;
 }
 
 void top(unsigned short int levels){
